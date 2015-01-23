@@ -16,6 +16,6 @@
   copy: src=config dest=/home/ts3/teamspeak3-helperScripts/opt/config owner=ts3 group=ts3 mode=0640
 
 - name: install ts3
-  shell: /home/ts3/teamspeak3-helperScripts/opt/install.sh
+  shell: su -u ts3 -c "/home/ts3/teamspeak3-helperScripts/opt/install.sh"
   args:
     creates: /home/ts3/teamspeakServer
