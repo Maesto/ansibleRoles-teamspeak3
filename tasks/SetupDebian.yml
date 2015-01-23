@@ -1,5 +1,9 @@
 - name: install git
   apt: update_cache=yes name=git state=latest
+
+- name: install curl
+  apt: update_cache=yes name=curl atate=latest
+
 - name: add teamspeak user
   user: name=ts3 state=present
 
