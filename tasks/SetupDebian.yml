@@ -4,6 +4,9 @@
 - name: install curl
   apt: update_cache=yes name=curl state=latest
 
+- name: install libmariadb2
+  apt: update_cache=yes name=libmariadb2 state=latest
+
 - name: add teamspeak user
   user: name=ts3 state=present
 
@@ -18,6 +21,7 @@
 
 - name: changeing permissions
   shell: chown -R ts3:ts3 /home/ts3/teamspeak3-helperScripts/
+  changed_when: "1 != 1"
 
 - name: config scripts
   copy: src=config dest=/home/ts3/teamspeak3-helperScripts/opt/config owner=ts3 group=ts3 mode=0640
@@ -25,4 +29,15 @@
 - name: install ts3
   shell: su -c "/home/ts3/teamspeak3-helperScripts/opt/install.sh" ts3
   args:
-    creates: /home/ts3/teamspeakServer
+  creates: /home/ts3/teamspeakServer
+
+- name: configure Server
+  template: src=ts3db_mariadb.ini dest=/home/ts3/teamspeakServer/ts3db_mariadb.ini
+
+- name: configure Start Scripts
+  template: src=start.sh dest=/home/ts3/teamspeakServer/start.sh
+
+- name: configure Stop Scripts
+  template: src=stop.sh dest=/home/ts3/teamspeakServer/stop.sh
+
+
