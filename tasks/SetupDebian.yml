@@ -1,1 +1,14 @@
-#You should insert here all code that is needed to install your given programm on a debian based machine. 
+- name: add teamspeak user
+  user: name=ts3 state=present
+
+- name: creating teamspeak database
+  mysql_db: name=teamspeak3 state=present
+
+- name: creating teamspeak database user
+  mysql_user: name=teamspeak3 password={{ teamspeak_db_password }} priv=teamspeak3.*:ALL state=present
+
+- name: checking out ts3 scripts
+  git: repo=https://github.com/Maesto/teamspeak3-helperScripts.git dest=/home/ts3/ update=yes 
+
+- name: config scripts
+  copy: src=config dest=/home/ts3/teamspeak3-helperScripts/opt/config owner=teamspeak3 group=teamspeak3 mode=0640
