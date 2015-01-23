@@ -10,7 +10,7 @@
   mysql_user: name=teamspeak3 password={{ teamspeak_db_password }} priv=teamspeak3.*:ALL state=present
 
 - name: checking out ts3 scripts
-  git: repo=https://github.com/Maesto/teamspeak3-helperScripts.git dest=/home/ts3/ update=yes 
+  git: repo=https://github.com/Maesto/teamspeak3-helperScripts.git dest=/home/ts3/teamspeak3-helperScripts/ update=yes 
 
 - name: config scripts
   copy: src=config dest=/home/ts3/teamspeak3-helperScripts/opt/config owner=teamspeak3 group=teamspeak3 mode=0640
