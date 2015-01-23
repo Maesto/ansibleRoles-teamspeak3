@@ -29,7 +29,7 @@
 - name: install ts3
   shell: su -c "/home/ts3/teamspeak3-helperScripts/opt/install.sh" ts3
   args:
-  creates: /home/ts3/teamspeakServer
+  	creates: /home/ts3/teamspeakServer
 
 - name: configure Server
   template: src=ts3db_mariadb.ini dest=/home/ts3/teamspeakServer/ts3db_mariadb.ini
