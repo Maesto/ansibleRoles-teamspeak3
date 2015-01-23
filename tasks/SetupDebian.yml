@@ -13,4 +13,4 @@
   git: repo=https://github.com/Maesto/teamspeak3-helperScripts.git dest=/home/ts3/teamspeak3-helperScripts/ update=yes 
 
 - name: config scripts
-  copy: src=config dest=/home/ts3/teamspeak3-helperScripts/opt/config owner=teamspeak3 group=teamspeak3 mode=0640
+  copy: src=config dest=/home/ts3/teamspeak3-helperScripts/opt/config owner=ts3 group=ts3 mode=0640
