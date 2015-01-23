@@ -2,7 +2,7 @@
   apt: update_cache=yes name=git state=latest
 
 - name: install curl
-  apt: update_cache=yes name=curl atate=latest
+  apt: update_cache=yes name=curl state=latest
 
 - name: add teamspeak user
   user: name=ts3 state=present
@@ -15,6 +15,9 @@
 
 - name: checking out ts3 scripts
   git: repo=https://github.com/Maesto/teamspeak3-helperScripts.git dest=/home/ts3/teamspeak3-helperScripts/ update=yes 
+
+- name: changeing permissions
+  shell: chown -R ts3:ts3 /home/ts3/teamspeak3-helperScripts/
 
 - name: config scripts
   copy: src=config dest=/home/ts3/teamspeak3-helperScripts/opt/config owner=ts3 group=ts3 mode=0640
