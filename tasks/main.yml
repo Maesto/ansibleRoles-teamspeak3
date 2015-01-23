@@ -1,7 +1,3 @@
-#Including Vars dependend on OS
-- name: Include OS-specific variables.
-  include_vars: "{{ ansible_os_family }}.yml"
-
 #Setting up on RedHat Systems
 - include: SetupRedHat.yml
   when: ansible_os_family == 'RedHat'
