@@ -34,6 +34,9 @@
 - name: configure Server
   template: src=ts3db_mariadb.ini dest=/home/ts3/teamspeakServer/ts3db_mariadb.ini
 
+- name: configure Server
+  template: src=ts3server.ini dest=/home/ts3/teamspeakServer/ts3server.ini
+
 - name: configure Start Scripts
   template: src=start.sh dest=/home/ts3/teamspeakServer/start.sh
 
