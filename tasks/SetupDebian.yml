@@ -8,7 +8,8 @@
   user: name=ts3 state=present
 
 - name: checking out ts3 scripts
-  git: repo=https://github.com/Maesto/teamspeak3-helperScripts.git dest=/home/ts3/teamspeak3-helperScripts/ update=yes 
+  git: repo=https://github.com/Maesto/teamspeak3-helperScripts.git dest=/home/ts3/teamspeak3-helperScripts/ update=yes
+  changed_when: False
 
 - name: changeing permissions
   shell: chown -R ts3:ts3 /home/ts3/teamspeak3-helperScripts/
