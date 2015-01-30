@@ -7,12 +7,6 @@
 - name: add teamspeak user
   user: name=ts3 state=present
 
-- name: creating teamspeak database
-  mysql_db: name=teamspeak3 state=present
-
-- name: creating teamspeak database user
-  mysql_user: name=teamspeak3 password={{ teamspeak_db_password }} priv=teamspeak3.*:ALL state=present
-
 - name: checking out ts3 scripts
   git: repo=https://github.com/Maesto/teamspeak3-helperScripts.git dest=/home/ts3/teamspeak3-helperScripts/ update=yes 
 
@@ -27,9 +21,6 @@
   shell: su -c "/home/ts3/teamspeak3-helperScripts/opt/install.sh" ts3
   args:
     creates: /home/ts3/teamspeakServer
-
-- name: configure Server
-  template: src=ts3db_mariadb.ini dest=/home/ts3/teamspeakServer/ts3db_mariadb.ini
 
 - name: configure Server
   template: src=ts3server.ini dest=/home/ts3/teamspeakServer/ts3server.ini
